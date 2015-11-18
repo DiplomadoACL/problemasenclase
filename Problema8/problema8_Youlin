@@ -1,0 +1,34 @@
+# -*- coding:utf-8 -*-
+
+from gutenberg.acquire import load_etext 
+from gutenberg.cleanup import strip_headers
+codigos_libros=[1619, 7109, 9895, 10506, 10822, 11071, 11529, 11663, 12368, 12627, 
+13458, 13519, 14235, 15027, 15206, 15531, 15532, 15725, 16110, 16201, 16413, 16484, 16625, 
+17406, 17430, 17491, 20401, 21651, 23206, 23236, 24536, 24601, 24925, 25317, 25640, 25687, 
+25777, 25988, 26284, 26655, 27736, 29497, 29506, 29663, 29799, 29831, 30053, 30122, 30425, 
+30535, 30903, 30986, 31013, 31464, 31541, 31613, 31637, 31707, 32235, 32315, 32364, 33690, 
+35882, 36253, 36453, 36573, 36940, 37067, 37095, 37139, 37637, 38814, 39444, 39613, 39990, 
+41746, 42727]
+
+total_diptongos=0
+
+dic_dipton_decreciente={u"ai": {}, u"au": {}, u"ei": {}, u"eu": {}, u"oi": {}, u"ou" :{}}
+
+for codigo_libro in codigos_libros:
+    print "\tlibro:",codigo_libro
+    texto=load_etext(codigo_libro)
+    texto=strip_headers(texto).lower()
+
+   # dipton_decreciente= [u"ai", u"au", u"ei", u"eu", u"oi", u"ou"]
+
+    for caracter_especial in u'",.-_¿¡?():;*><'+"'":
+        texto=texto.replace(caracter_especial, ' ')
+    palabras=texto.split()
+
+    for diptongo in dic_dipton_decreciente:
+        dic_dipton_decreciente[diptongo]
+        for palabra in palabras:
+            if palabra.find() >= 0:            
+                dic_dipton_decreciente[diptongo][palabra] = dic_dipton_decreciente[diptongo][palabra]+1
+            elif palabra.find() >=0:
+
