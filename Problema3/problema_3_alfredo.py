@@ -22,7 +22,7 @@ for codigo_libro_es in codigos_libros.es:
 	texto=load_etext(codigo_libro_es)
 	texto=strip_headers(texto)
 	
-# En cada libro se separan las oraciones y se delimitan por el símbolo |||.
+# En cada libro se separan,(por fin) las oraciones y se delimitan por el símbolo |||.
 	oraciones_libro=split_sentences(texto)
 	for oracion_libro in oraciones_libro:
 		palabras=rufino.split_words(oracion_libro)
