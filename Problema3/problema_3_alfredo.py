@@ -38,3 +38,5 @@ print u'Total de oraciones en español:',len(dic_oraciones_es)
 print u'Total de palabras en español:',total_palabras_es
 print dic_oraciones_es
 
+#hola
+
