@@ -2,6 +2,7 @@ import pickle
 import math
 
 PATH="diccionarios/"
+soporte=1000
 
 codigo_ISO="es"
 archivo=open(PATH+codigo_ISO+"wiki_frecuencias.pickle","r")
@@ -18,17 +19,18 @@ numero_palabras_corpus=metadatos_palabras["palabras_corpus"]
 #lista_bigramas_ordenados.sort(key=lambda x:-dic_bigramas[x])
 #for bigrama in lista_bigramas_ordenados[:20]: 
 #    print bigrama, dic_bigramas[bigrama]
-    
+
 dic_pmi={}
 for bigrama in dic_bigramas:
-    palabra1=bigrama[:bigrama.find("|||")]
-    palabra2=bigrama[bigrama.find("|||")+3:]
-    print "/t",bigrama,palabra1,palabra2
-    P_palabra1=float(dic_palabras[palabra1])/numero_palabras_corpus
-    P_palabra2=float(dic_palabras[palabra2])/numero_palabras_corpus
-    P_bigrama=float(dic_bigramas[bigrama])/(numero_palabras_corpus-1)
-    pmi=math.log(P_bigrama/(P_palabra1*P_palabra2))
-    dic_pmi[bigrama]=pmi
+    if dic_bigramas[bigrama]>=soporte:
+        palabra1=bigrama[:bigrama.find("|||")]
+        palabra2=bigrama[bigrama.find("|||")+3:]
+        print "/t",bigrama,palabra1,palabra2
+        P_palabra1=float(dic_palabras[palabra1])/numero_palabras_corpus
+        P_palabra2=float(dic_palabras[palabra2])/numero_palabras_corpus
+        P_bigrama=float(dic_bigramas[bigrama])/(numero_palabras_corpus-1)
+        pmi=math.log(P_bigrama/(P_palabra1*P_palabra2))
+        dic_pmi[bigrama]=pmi
 
 lista_bigramas_ordenados=dic_pmi.keys()
 lista_bigramas_ordenados.sort(key=lambda x:-dic_pmi[x])
