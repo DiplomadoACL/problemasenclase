@@ -25,7 +25,7 @@ for bigrama in dic_bigramas:
     if dic_bigramas[bigrama]>=soporte:
         palabra1=bigrama[:bigrama.find("|||")]
         palabra2=bigrama[bigrama.find("|||")+3:]
-        print "/t",bigrama,palabra1,palabra2
+        #print "/t",bigrama,palabra1,palabra2
         P_palabra1=float(dic_palabras[palabra1])/numero_palabras_corpus
         P_palabra2=float(dic_palabras[palabra2])/numero_palabras_corpus
         P_bigrama=float(dic_bigramas[bigrama])/(numero_palabras_corpus-1)
