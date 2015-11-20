@@ -1,8 +1,13 @@
 import rufino
 import pickle
+import sys
 
-codigos_ISO=["es","en"]
+tamano_corpus=int(sys.argv[1])
+codigos_ISO=sys.argv[2:]
+
+#codigos_ISO=["es","en"]
 #codigos_ISO=rufino.WIKIPEDIA_URLS.keys()
+codigos_ISO=
 
 PATH="diccionarios/"   # SUBDIRECTORIO DONDE SE GUARDARAN LOS DICCIONARIOS
                         # ATENCION, CREAR EL DIRECTORIO diccionarios/
@@ -28,7 +33,7 @@ for codigo_ISO in codigos_ISO:
             else:
                 dic_conteo_bigramas[bigrama]+=1
         contador_palabras=contador_palabras+len(palabras)
-        if contador_palabras>1000000:
+        if contador_palabras>tamano_corpus:
             break
     metadatos={"url":url,
                "codigo_ISO":codigo_ISO,
