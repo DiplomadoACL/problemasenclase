@@ -2,7 +2,7 @@ import pickle
 import math
 
 PATH="diccionarios/"
-soporte=1000
+soporte=2
 
 codigo_ISO="es"
 archivo=open(PATH+codigo_ISO+"wiki_frecuencias.pickle","r")
