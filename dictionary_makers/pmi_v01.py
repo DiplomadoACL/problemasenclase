@@ -1,11 +1,12 @@
 import pickle
+PATH="diccionarios/"
 
 codigo_ISO="es"
-archivo=open(codigo_ISO+"wiki_frecuencias.pickle","r")
+archivo=open(PATH+codigo_ISO+"wiki_frecuencias.pickle","r")
 metadatos_palabras,dic_palabras=pickle.load(archivo)
 archivo.close()
 
-archivo=open(codigo_ISO+"wiki_2grams.pickle","r")
+archivo=open(PATH+codigo_ISO+"wiki_2grams.pickle","r")
 metadatos_bigramas,dic_bigramas=pickle.load(archivo)
 archivo.close()
 
