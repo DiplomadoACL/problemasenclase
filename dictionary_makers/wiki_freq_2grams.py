@@ -22,7 +22,7 @@ for codigo_ISO in codigos_ISO:
         for i in range(len(palabras)-1):
             palabra_actual=palabras[i]
             palabra_siguiente=palabras[i+1]
-            bigrama=palabra_actual+"_"+palabra_siguiente
+            bigrama=palabra_actual+"|||"+palabra_siguiente
             if bigrama not in dic_conteo_bigramas:
                 dic_conteo_bigramas[bigrama]=1
             else:
