@@ -7,7 +7,6 @@ codigos_ISO=sys.argv[2:]
 
 #codigos_ISO=["es","en"]
 #codigos_ISO=rufino.WIKIPEDIA_URLS.keys()
-codigos_ISO=
 
 PATH="diccionarios/"   # SUBDIRECTORIO DONDE SE GUARDARAN LOS DICCIONARIOS
                         # ATENCION, CREAR EL DIRECTORIO diccionarios/
