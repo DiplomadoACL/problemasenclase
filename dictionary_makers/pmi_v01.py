@@ -21,8 +21,8 @@ numero_palabras_corpus=metadatos_palabras["palabras_corpus"]
     
 dic_pmi={}
 for bigrama in dic_bigramas:
-    palabra1=bigrama[:bigrama.find("_")]
-    palabra2=bigrama[bigrama.find("_")+1:]
+    palabra1=bigrama[:bigrama.find("|||")]
+    palabra2=bigrama[bigrama.find("|||")+3:]
     print "/t",bigrama,palabra1,palabra2
     P_palabra1=float(dic_palabras[palabra1])/numero_palabras_corpus
     P_palabra2=float(dic_palabras[palabra2])/numero_palabras_corpus
@@ -33,7 +33,7 @@ for bigrama in dic_bigramas:
 lista_bigramas_ordenados=dic_pmi.keys()
 lista_bigramas_ordenados.sort(key=lambda x:-dic_pmi[x])
 for bigrama in lista_bigramas_ordenados[:50]: 
-    palabra1=bigrama[:bigrama.find("_")]
-    palabra2=bigrama[bigrama.find("_")+1:]
+    palabra1=bigrama[:bigrama.find("|||")]
+    palabra2=bigrama[bigrama.find("|||")+3:]
     print bigrama, dic_pmi[bigrama],dic_palabras[palabra1],dic_palabras[palabra2],dic_bigramas[bigrama]
     
