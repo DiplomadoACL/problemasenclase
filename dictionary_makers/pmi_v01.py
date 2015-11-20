@@ -22,7 +22,7 @@ numero_palabras_corpus=metadatos_palabras["palabras_corpus"]
 
 dic_pmi={}
 for bigrama in dic_bigramas:
-    if dic_bigramas[bigrama]>=soporte:
+    if dic_bigramas[bigrama]>=0:
         palabra1=bigrama[:bigrama.find("|||")]
         palabra2=bigrama[bigrama.find("|||")+3:]
         #print "/t",bigrama,palabra1,palabra2
