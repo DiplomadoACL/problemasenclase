@@ -2,7 +2,7 @@ import rufino
 import pickle
 import sys
 
-tamano_corpus=int(sys.argv[1])
+tamano_corpus=int(sys.argv[1])  # funcion int(cadena) convierte la cadena en un numero entero
 codigos_ISO=sys.argv[2:]
 
 #codigos_ISO=["es","en"]
