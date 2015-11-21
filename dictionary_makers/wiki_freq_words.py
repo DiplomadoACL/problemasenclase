@@ -1,13 +1,15 @@
 import rufino
 import pickle
+import sys
 
-# PARAMETROS
-codigo_ISO="es"
-max_palabras_corpus=10000000
+max_palabras_corpus=int(sys.argv[1])  # funcion int(cadena) convierte la cadena en un numero entero
+codigos_ISO=sys.argv[2:]
+#codigo_ISO="es"
+
 reporta_cada_cuantos_articulos=1000
 
 # AQUI INICIA EL PROGRAMA
-codigos_ISO=[codigo_iso]
+#codigos_ISO=[codigo_iso]
 #codigos_ISO=rufino.WIKIPEDIA_URLS.keys()
 PATH="diccionarios/"   # SUBDIRECTORIO DONDE SE GUARDARAN LOS DICCIONARIOS
                         # ATENCION, CREAR EL DIRECTORIO diccionarios/
