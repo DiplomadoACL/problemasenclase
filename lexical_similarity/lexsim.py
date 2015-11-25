@@ -409,7 +409,7 @@ for palabra1,palabra2 in lista_pares_palabras:
     P_palabra1=float(dic_freq_palabras[palabra1])/contador_oraciones
     P_palabra2=float(dic_freq_palabras[palabra2])/contador_oraciones
     P_p1yp2=float(dic_asoc_palabras[(palabra1,palabra2)])/contador_oraciones
-    if P_palabra1*P_palabra2==0:
+    if P_palabra1*P_palabra2==0 or P_p1yp2==0:
         pmi=0.0
     else:
         pmi=math.log(P_p1yp2/(P_palabra1*P_palabra2))
