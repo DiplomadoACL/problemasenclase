@@ -2,6 +2,8 @@
 import rufino
 import sys
 import math
+from scipy.stats.stats import pearsonr
+from scipy.stats.stats import spearmanr
 
 tamano_corpus=int(sys.argv[1])  # funcion int(cadena) convierte la cadena en un numero entero
 codigo_ISO=sys.argv[2]
@@ -405,6 +407,8 @@ for articulo in rufino.get_articles(url):
         break
     
 # calcula pmi entre las palabras del dataset
+predicciones=[]
+gold_standard=[]
 for palabra1,palabra2 in lista_pares_palabras:
     P_palabra1=float(dic_freq_palabras[palabra1])/contador_oraciones
     P_palabra2=float(dic_freq_palabras[palabra2])/contador_oraciones
@@ -414,10 +418,15 @@ for palabra1,palabra2 in lista_pares_palabras:
     else:
         pmi=math.log(P_p1yp2/(P_palabra1*P_palabra2))
     print palabra1,palabra2,pmi,dataset[(palabra1,palabra2)]
+    predicciones.append(pmi)
+    gold_standard.append(dataset[(palabra1,palabra2)])
     
 
 print "numero de pares en el conjunto de datos:",len(lista_pares_palabras)
 print "tamano del vocabulario",len(dic_freq_palabras)
+print "Pearson correlation r=",pearsonr(predicciones,gold_standard)
+print "Spearman correlation rho=",spearmanr(predicciones,gold_standard)
+
 
         
 
