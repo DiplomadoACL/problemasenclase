@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 import rufino
 import sys
 import math
