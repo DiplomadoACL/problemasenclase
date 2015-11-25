@@ -385,7 +385,7 @@ contador_articulos=0
 contador_oraciones=0
 for articulo in rufino.get_articles(url):
     contador_articulos+=1
-    if contador_articulos%1000==0:
+    if contador_articulos%100==0:
         print "\t"+codigo_ISO+"{0} articulos procesados, {1} palabras procesadas".format(contador_articulos,contador_palabras)
     texto=rufino.clean_article(articulo).lower()
     oraciones=rufino.split_sentences(texto)
