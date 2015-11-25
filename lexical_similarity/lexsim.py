@@ -400,7 +400,7 @@ for articulo in rufino.get_articles(url):
             if (palabra1 in palabras_oracion) and (palabra2 in palabras_oracion):
                 dic_asoc_palabras[(palabra1,palabra2)]+=1
 
-    contador_palabras=contador_palabras+len(palabras)
+        contador_palabras=contador_palabras+len(palabras_oracion)
     if contador_palabras>tamano_corpus:
         break
     
