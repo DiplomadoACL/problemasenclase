@@ -385,14 +385,13 @@ contador_articulos=0
 contador_oraciones=0
 for articulo in rufino.get_articles(url):
     contador_articulos+=1
-        if contador_articulos%1000==0:
-            print "\t"+codigo_ISO+"{0} articulos procesados, {1} palabras procesadas".format(contador_articulos,contador_palabras)
+    if contador_articulos%1000==0:
+        print "\t"+codigo_ISO+"{0} articulos procesados, {1} palabras procesadas".format(contador_articulos,contador_palabras)
     texto=rufino.clean_article(articulo).lower()
     oraciones=rufino.split_sentences(texto)
     contador_oraciones+=len(oraciones)
     for oracion in oraciones:
         palabras_oracion=rufino.split_words(oracion)
-        
         for palabra_dataset in lista_palabras_vocabulario_dataset:
             if palabra_dataset in palabras_oracion:
                 dic_freq_palabras[palabra_dataset]+=1
