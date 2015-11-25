@@ -4,7 +4,7 @@ import sys
 import math
 
 tamano_corpus=int(sys.argv[1])  # funcion int(cadena) convierte la cadena en un numero entero
-codigo_ISO=sys.argv[2:]
+codigo_ISO=sys.argv[2]
 
 
 dataset={
