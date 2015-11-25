@@ -377,7 +377,7 @@ dic_asoc_palabras={}
 for palabra1,palabra2 in lista_pares_palabras:
     dic_asoc_palabras[(palabra1,palabra2)]=0
 
-# recorrer el corpus recogiendo estadísticas
+# recorrer el corpus recogiendo estadisticas
 url=rufino.WIKIPEDIA_URLS[codigo_ISO]
 contador_palabras=0
 contador_articulos=0
