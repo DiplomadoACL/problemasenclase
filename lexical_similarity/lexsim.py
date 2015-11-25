@@ -362,8 +362,8 @@ for palabra1,palabra2 in lista_pares_palabras:
         dic_freq_palabras[palabra1]=0
     if palabra2 not in dic_freq_palabras:
         dic_freq_palabras[palabra2]=0
-print u"número de pares en el conjunto de datos:",len(lista_pares_palabras)
-print u"tamaño del vocabulario",len(dic_freq_palabras)
+print "numero de pares en el conjunto de datos:",len(lista_pares_palabras)
+print "tamano del vocabulario",len(dic_freq_palabras)
 
         
 
