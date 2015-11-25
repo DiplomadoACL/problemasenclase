@@ -1,4 +1,10 @@
 import rufino
+import sys
+import math
+
+tamano_corpus=int(sys.argv[1])  # funcion int(cadena) convierte la cadena en un numero entero
+codigo_ISO=sys.argv[2:]
+
 
 dataset={
 ("tiger","tiger"):10,
@@ -356,6 +362,7 @@ dataset={
 ("architecture","century"):3.78,
 }
 
+#preparar diccionario par alas frecuencias de las palabras
 lista_pares_palabras=dataset.keys()
 dic_freq_palabras={}
 for palabra1,palabra2 in lista_pares_palabras:
@@ -363,6 +370,49 @@ for palabra1,palabra2 in lista_pares_palabras:
         dic_freq_palabras[palabra1]=0
     if palabra2 not in dic_freq_palabras:
         dic_freq_palabras[palabra2]=0
+lista_palabras_vocabulario_dataset=dic_freq_palabras.keys()
+
+# preparar diccionaro para los conetos de asociaciones de palabras en oraciones
+dic_asoc_palabras={}
+for palabra1,palabra2 in lista_pares_palabras:
+    dic_asoc_palabras[(palabra1,palabra2)]=0
+
+# recorrer el corpus recogiendo estadísticas
+url=rufino.WIKIPEDIA_URLS[codigo_ISO]
+contador_palabras=0
+contador_articulos=0
+contador_oraciones=0
+for articulo in rufino.get_articles(url):
+    contador_articulos+=1
+        if contador_articulos%1000==0:
+            print "\t"+codigo_ISO+"{0} articulos procesados, {1} palabras procesadas".format(contador_articulos,contador_palabras)
+    texto=rufino.clean_article(articulo).lower()
+    oraciones=rufino.split_sentences(texto)
+    contador_oraciones+=len(oraciones)
+    for oracion in oraciones:
+        palabras_oracion=rufino.split_words(oracion)
+        
+        for palabra_dataset in lista_palabras_vocabulario_dataset:
+            if palabra_dataset in palabras_oracion:
+                dic_freq_palabras[palabra_dataset]+=1
+        
+        for palabra1,palabra2 in lista_pares_palabras:
+            if (palabra1 in palabras_oracion) and (palabra2 in palabras_oracion):
+                dic_asoc_palabras[(palabra1,palabra2)]+=1
+
+    contador_palabras=contador_palabras+len(palabras)
+    if contador_palabras>tamano_corpus:
+        break
+    
+# calcula pmi entre las palabras del dataset
+for palabra1,palabra2 in lista_pares_palabras:
+    P_palabra1=float(dic_freq_palabras[palabra1])/contador_oraciones
+    P_palabra2=float(dic_freq_palabras[palabra2])/contador_oraciones
+    P_p1yp2=float(dic_asoc_palabras[(palabra1,palabra2)])/contador_oraciones
+    pmi=math.log(P_p1yp2/(P_palabra1*P_palabra2))
+    print palabra1,palabra2,pmi
+    
+
 print "numero de pares en el conjunto de datos:",len(lista_pares_palabras)
 print "tamano del vocabulario",len(dic_freq_palabras)
 
