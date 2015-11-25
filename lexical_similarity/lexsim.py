@@ -393,11 +393,11 @@ for articulo in rufino.get_articles(url):
     for oracion in oraciones:
         palabras_oracion=rufino.split_words(oracion)
         for palabra_dataset in lista_palabras_vocabulario_dataset:
-            if palabra_dataset in palabras_oracion:
+            if palabra_dataset.lower() in palabras_oracion:
                 dic_freq_palabras[palabra_dataset]+=1
         
         for palabra1,palabra2 in lista_pares_palabras:
-            if (palabra1 in palabras_oracion) and (palabra2 in palabras_oracion):
+            if (palabra1.lower() in palabras_oracion) and (palabra2.lower() in palabras_oracion):
                 dic_asoc_palabras[(palabra1,palabra2)]+=1
 
         contador_palabras=contador_palabras+len(palabras_oracion)
