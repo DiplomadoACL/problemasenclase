@@ -6,7 +6,6 @@ max_palabras_corpus=int(sys.argv[1])  # funcion int(cadena) convierte la cadena 
 codigos_ISO=sys.argv[2:]
 
 for codigo_ISO in codigos_ISO:
-
 	url=rufino.WIKIPEDIA_URLS[codigo_ISO]
 	total_oraciones=0
 	total_palabras_corpus=0
@@ -19,7 +18,6 @@ for codigo_ISO in codigos_ISO:
 	    oraciones=rufino.split_sentences(texto)
 
 	    for oracion in oraciones: 
-		
 		palabras=rufino.split_words(oracion)
 		total_palabras_corpus=total_palabras_corpus+len(palabras)
 
@@ -35,8 +33,8 @@ for codigo_ISO in codigos_ISO:
 	    
 
 
-	print u"Diccionario contador largo de oraciones: ", dic
-	print
-	print u"Total oraciones: ", total_oraciones
-	print
-	print u"Total de artículos:  ",total_articulos
+print u"Diccionario contador largo de oraciones: ", dic
+print
+print u"Total oraciones: ", total_oraciones
+print
+print u"Total de artículos:  ",total_articulos
