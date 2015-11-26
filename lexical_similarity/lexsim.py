@@ -388,7 +388,7 @@ for palabra1,palabra2 in lista_pares_palabras:
 # recorrer el corpus recogiendo estadisticas
 url=rufino.WIKIPEDIA_URLS[codigo_ISO]
 # mirror alternativo
-url="ftp://ftpmirror.your.org/pub/wikimedia/dumps/enwiki/20151002/enwiki-20151002-pages-meta-current.xml.bz2"
+#url="ftp://ftpmirror.your.org/pub/wikimedia/dumps/enwiki/20151002/enwiki-20151002-pages-meta-current.xml.bz2"
 contador_palabras=0
 contador_articulos=0
 contador_oraciones=0
@@ -396,7 +396,7 @@ marca_de_tiempo=time.time()
 for articulo in rufino.get_articles(url):
     contador_articulos+=1
     if contador_articulos%reportar_cada_x_articulos==0:
-        print "\t"+codigo_ISO+"{0} articulos procesados, {1} palabras procesadas, en {2} segundos".format(contador_articulos,contador_palabras,time.time()-marca_de_tiempo)
+        print codigo_ISO+"{0} articulos procesados, {1} palabras procesadas, en {2} segundos".format(contador_articulos,contador_palabras,round(time.time()-marca_de_tiempo,1))
         marca_de_tiempo=time.time()
     texto=rufino.clean_article(articulo).lower()
     oraciones=rufino.split_sentences(texto)
