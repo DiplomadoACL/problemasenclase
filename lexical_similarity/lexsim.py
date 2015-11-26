@@ -2,11 +2,15 @@
 import rufino
 import sys
 import math
+import time
+
 from scipy.stats.stats import pearsonr
 from scipy.stats.stats import spearmanr
 
+# parametros de la linea de comandos
 tamano_corpus=int(sys.argv[1])  # funcion int(cadena) convierte la cadena en un numero entero
-codigo_ISO=sys.argv[2]
+reportar_cada_x_articulos=int(sys.argv[2])
+codigo_ISO=sys.argv[3]
 
 
 dataset={
@@ -368,6 +372,7 @@ dataset={
 #preparar diccionario par alas frecuencias de las palabras
 lista_pares_palabras=dataset.keys()
 dic_freq_palabras={}
+
 for palabra1,palabra2 in lista_pares_palabras:
     if palabra1 not in dic_freq_palabras:
         dic_freq_palabras[palabra1]=0
@@ -385,10 +390,12 @@ url=rufino.WIKIPEDIA_URLS[codigo_ISO]
 contador_palabras=0
 contador_articulos=0
 contador_oraciones=0
+marca_de_tiempo=time.time()
 for articulo in rufino.get_articles(url):
     contador_articulos+=1
-    if contador_articulos%100==0:
-        print "\t"+codigo_ISO+"{0} articulos procesados, {1} palabras procesadas".format(contador_articulos,contador_palabras)
+    if contador_articulos%reportar_cada_x_articulos==0:
+        print "\t"+codigo_ISO+"{0} articulos procesados, {1} palabras procesadas, en {2} segundos".format(contador_articulos,contador_palabras,time.time()-marca_de_tiempo)
+        marca_de_tiempo=time.time()
     texto=rufino.clean_article(articulo).lower()
     oraciones=rufino.split_sentences(texto)
     contador_oraciones+=len(oraciones)
