@@ -387,6 +387,8 @@ for palabra1,palabra2 in lista_pares_palabras:
 
 # recorrer el corpus recogiendo estadisticas
 url=rufino.WIKIPEDIA_URLS[codigo_ISO]
+# mirror alternativo
+url="ftp://ftpmirror.your.org/pub/wikimedia/dumps/enwiki/20151002/enwiki-20151002-pages-meta-current.xml.bz2"
 contador_palabras=0
 contador_articulos=0
 contador_oraciones=0
