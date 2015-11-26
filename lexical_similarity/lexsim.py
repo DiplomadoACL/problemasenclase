@@ -8,6 +8,10 @@ from scipy.stats.stats import pearsonr
 from scipy.stats.stats import spearmanr
 
 # parametros de la linea de comandos
+print "Modo de uso:"
+print u"python lexsim.py <tamaño del corpus> <reportar cada # artículos> <código ISO del idioma>"
+print u"ejemplo: python lexsim.py 10000000 10 en"
+
 tamano_corpus=int(sys.argv[1])  # funcion int(cadena) convierte la cadena en un numero entero
 reportar_cada_x_articulos=int(sys.argv[2])
 codigo_ISO=sys.argv[3]
@@ -373,6 +377,7 @@ dataset={
 lista_pares_palabras=dataset.keys()
 dic_freq_palabras={}
 
+# obtener el vocabulario de interes
 for palabra1,palabra2 in lista_pares_palabras:
     if palabra1 not in dic_freq_palabras:
         dic_freq_palabras[palabra1]=0
@@ -380,7 +385,7 @@ for palabra1,palabra2 in lista_pares_palabras:
         dic_freq_palabras[palabra2]=0
 lista_palabras_vocabulario_dataset=dic_freq_palabras.keys()
 
-# preparar diccionaro para los conetos de asociaciones de palabras en oraciones
+# preparar diccionaro para los contos de asociaciones de palabras en oraciones
 dic_asoc_palabras={}
 for palabra1,palabra2 in lista_pares_palabras:
     dic_asoc_palabras[(palabra1,palabra2)]=0
