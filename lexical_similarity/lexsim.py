@@ -9,7 +9,7 @@ from scipy.stats.stats import spearmanr
 
 # parametros de la linea de comandos
 print "Modo de uso:"
-print u"python lexsim.py <tamaño del corpus> <reportar cada # artículos> <código ISO del idioma>"
+print u"python lexsim.py <tamanno del corpus> <reportar cada # articulos> <codigo ISO del idioma>"
 print u"ejemplo: python lexsim.py 10000000 10 en"
 
 tamano_corpus=int(sys.argv[1])  # funcion int(cadena) convierte la cadena en un numero entero
