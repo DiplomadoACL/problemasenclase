@@ -3,18 +3,39 @@ import rufino
 import sys
 import math
 import time
+import datasets
 
 from scipy.stats.stats import pearsonr
 from scipy.stats.stats import spearmanr
 
 # parametros de la linea de comandos
 print "Modo de uso:"
-print u"python lexsim.py <tamanno del corpus> <reportar cada # articulos> <codigo ISO del idioma>"
-print u"ejemplo: python lexsim.py 10000000 10 en"
-
+print u"python lexsim.py <tamanno del corpus> <reportar cada # articulos> <codigo ISO del idioma> <dataset>"
+print u"ejemplo: python lexsim.py 10000000 10 en RG"
+print "datasets disponibles RG WS353 WSS WSR MC SCWS RW MEN MTURK771 MTURK287 YP130 SL999 REL122 VERB143"
 tamano_corpus=int(sys.argv[1])  # funcion int(cadena) convierte la cadena en un numero entero
 reportar_cada_x_articulos=int(sys.argv[2])
 codigo_ISO=sys.argv[3]
+nombre_dataset=sys.argv[4]
+
+dic_datasets={
+"RG":datasets.RG,
+"WS353":datasets.WSS,
+"WSR": datasets.WSR,
+"MC": datasets.MC,
+"SCWS":datasets.SCWS,
+"RW":datasets.RW,
+"MEN": datasets.MEN,
+"MTURK771": datasets.MTURK771,
+"MTURK287": datasets.MTURK287,
+"YP130":datasets.YP130,
+"SL999":datasets.SL999,
+"REL122":datasets.REL122,
+"VERB143":datasets.VERB143,
+}
+
+dataset=dic_datasets[nombre_dataset]
+
 
 
 dataset={
@@ -371,10 +392,18 @@ dataset={
 ("disaster","area"):6.25,
 ("governor","office"):6.34,
 ("architecture","century"):3.78,
+
+("architecture","century",3.78),
 }
 
 #preparar diccionario par alas frecuencias de las palabras
-lista_pares_palabras=dataset.keys()
+#lista_pares_palabras=dataset.keys()
+#lista_pares_palabras=[(p1,p2) for p1,p2,gs in dataset]  # LIST COMPRENHESION esto es equivalente a las siguientes tres lineas
+
+lista_pares_palabras=[]
+for p1,p2,gs in dataset:
+    lista_pares_palabras.append((p1,p2))
+    
 dic_freq_palabras={}
 
 # obtener el vocabulario de interes
@@ -385,7 +414,7 @@ for palabra1,palabra2 in lista_pares_palabras:
         dic_freq_palabras[palabra2]=0
 lista_palabras_vocabulario_dataset=dic_freq_palabras.keys()
 
-# preparar diccionaro para los contos de asociaciones de palabras en oraciones
+# preparar diccionaro para los conteos de asociaciones de palabras en oraciones
 dic_asoc_palabras={}
 for palabra1,palabra2 in lista_pares_palabras:
     dic_asoc_palabras[(palabra1,palabra2)]=0
