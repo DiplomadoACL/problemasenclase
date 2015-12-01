@@ -75,7 +75,7 @@ for articulo in rufino.get_articles(url):
                 pmi=0.0
             else:
                 pmi=math.log(P_p1yp2/(P_palabra1*P_palabra2))
-            print palabra1,palabra2,pmi,gold_standard[i]
+            #print palabra1,palabra2,pmi,gold_standard[i]
             predicciones.append(pmi)        
         #***
         print "{0}, {1} art., {2} palabras, r={3}, rho={4}, en {5} segundos".format(codigo_ISO, #0
