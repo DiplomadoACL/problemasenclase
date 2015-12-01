@@ -83,7 +83,12 @@ for articulo in rufino.get_articles(url):
     
 # calcula pmi entre las palabras del dataset
 predicciones=[]
-for palabra1,palabra2 in lista_pares_palabras:
+
+#for palabra1,palabra2 in lista_pares_palabras:
+for i in range(len(lista_pares_palabras)):
+    palabra1=lista_pares_palabras[i][0]
+    palabra2=lista_pares_palabras[i][1]
+    #palabra1,palabra2=lista_pares_palabras[i]  # equivalente a las dos lineas anteriores
     P_palabra1=float(dic_freq_palabras[palabra1])/contador_oraciones
     P_palabra2=float(dic_freq_palabras[palabra2])/contador_oraciones
     P_p1yp2=float(dic_asoc_palabras[(palabra1,palabra2)])/contador_oraciones
@@ -91,7 +96,7 @@ for palabra1,palabra2 in lista_pares_palabras:
         pmi=0.0
     else:
         pmi=math.log(P_p1yp2/(P_palabra1*P_palabra2))
-    print palabra1,palabra2,pmi,dataset[(palabra1,palabra2)]
+    print palabra1,palabra2,pmi,gold_standard[i]
     predicciones.append(pmi)
 
 
