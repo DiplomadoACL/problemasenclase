@@ -24,7 +24,7 @@ nombre_archivo_dataset=sys.argv[4]
 nombre_archivo_resultados="resultados_"+codigo_ISO+"_"+nombre_archivo_dataset.replace("/","_")+".txt"
 # inicia el archivo de resultados con la hora de inicio
 archivo_resultados=open(nombre_archivo_resultados,"w")
-archivo_resultados.write("Hora de inicio:"+strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+archivo_resultados.write("Hora de inicio:"+strftime("%Y-%m-%d %H:%M:%S", gmtime())+"\n")
 archivo_resultados.close()
 
 #preparar diccionario par alas frecuencias de las palabras
