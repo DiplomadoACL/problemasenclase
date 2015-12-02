@@ -4,6 +4,8 @@ import sys
 import math
 import time
 import codecs
+from time import gmtime, strftime
+
 
 
 from scipy.stats.stats import pearsonr
@@ -19,7 +21,15 @@ reportar_cada_x_articulos=int(sys.argv[2])
 codigo_ISO=sys.argv[3]
 nombre_archivo_dataset=sys.argv[4]
 
-
+nombre_archivo_resultados=  "resultados_"+
+                            codigo_ISO+
+                            "_"+
+                            nombre_archivo_dataset.replace("/","_").replace("\","_")+
+                            ".txt"
+# inicia el archivo de resultados con la hora de inicio
+archivo_resultados=open(nombre_archivo_resultados,"w")
+archivo_resultados.write("Hora de inicio:"+strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+archivo_resultados.close()
 
 #preparar diccionario par alas frecuencias de las palabras
 #lista_pares_palabras=dataset.keys()
@@ -79,13 +89,20 @@ for articulo in rufino.get_articles(url):
             #print palabra1,palabra2,pmi,gold_standard[i]
             predicciones.append(pmi)        
         #***
-        print "{0}, {1} art., {2} palabras, r={3}, rho={4}, en {5} segundos".format(codigo_ISO, #0
+        linea_resultados="{0}, {1} art., {2} palabras, r={3}, rho={4}, en {5} segundos, {6}".format(codigo_ISO, #0
         contador_articulos, #1
         contador_palabras,  #2
-        pearsonr(predicciones,gold_standard), #3
-        spearmanr(predicciones,gold_standard), #4
+        round(pearsonr(predicciones,gold_standard)[0],6), #3
+        round(spearmanr(predicciones,gold_standard)[0],6), #4
         round(time.time()-marca_de_tiempo, #5
+        strftime("%Y-%m-%d %H:%M:%S", gmtime()), #6
         1))
+        print linea_resultados
+        # adiciona la linea de resultados al archivo de resultados y lo cierra
+        archivo_resultados=open(nombre_archivo_resultados,"a")
+        archivo_resultados.write(linea_resultados+"\n")
+        archivo_resultados.close()
+        
         marca_de_tiempo=time.time()
     texto=rufino.clean_article(articulo).lower()
     oraciones=rufino.split_sentences(texto)
