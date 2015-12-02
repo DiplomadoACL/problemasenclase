@@ -3,6 +3,7 @@ import rufino
 import sys
 import math
 import time
+import codecs
 
 
 from scipy.stats.stats import pearsonr
@@ -24,7 +25,7 @@ nombre_archivo_dataset=sys.argv[4]
 #lista_pares_palabras=dataset.keys()
 #lista_pares_palabras=[(p1,p2) for p1,p2,gs in dataset]  # LIST COMPRENHESION esto es equivalente a las siguientes tres lineas
 
-archivo=open(nombre_archivo_dataset,"r")
+archivo=codecs.open(nombre_archivo_dataset,"r","utf-8")
 lista_pares_palabras=[]
 gold_standard=[]
 for linea in archivo.readlines():
