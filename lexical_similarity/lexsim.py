@@ -13,13 +13,14 @@ from scipy.stats.stats import spearmanr
 
 # parametros de la linea de comandos
 print "Modo de uso:"
-print u"python lexsim.py <tamanno del corpus> <reportar cada # articulos> <codigo ISO del idioma> <dataset>"
-print u"ejemplo: python lexsim.py 10000000 10 en RG"
+print u"python lexsim.py <tamanno del corpus> <reportar cada # articulos> <codigo ISO del idioma> <nombre archivo dataset> <largo maximo de oracion>"
+print u"ejemplo: python lexsim.py 10000000 10 en en/RG.txt 30"
 print "datasets disponibles RG WS353 WSS WSR MC SCWS RW MEN MTURK771 MTURK287 YP130 SL999 REL122 VERB143"
 tamano_corpus=int(sys.argv[1])  # funcion int(cadena) convierte la cadena en un numero entero
 reportar_cada_x_articulos=int(sys.argv[2])
 codigo_ISO=sys.argv[3]
 nombre_archivo_dataset=sys.argv[4]
+largo_maximo_oracion=int(sys.argv[5])
 
 nombre_archivo_resultados="resultados_"+codigo_ISO+"_"+nombre_archivo_dataset.replace("/","_")+".txt"
 # inicia el archivo de resultados con la hora de inicio
@@ -105,6 +106,8 @@ for articulo in rufino.get_articles(url):
     contador_oraciones+=len(oraciones)
     for oracion in oraciones:
         palabras_oracion=rufino.split_words(oracion)
+        if len(palabras_oracion)>=largo_maximo_oracion:
+            continue
         for palabra_dataset in lista_palabras_vocabulario_dataset:
             if palabra_dataset.lower() in palabras_oracion:
                 dic_freq_palabras[palabra_dataset]+=1
