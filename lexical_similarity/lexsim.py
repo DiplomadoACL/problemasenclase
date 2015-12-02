@@ -90,9 +90,9 @@ for articulo in rufino.get_articles(url):
         contador_palabras,  #2
         round(pearsonr(predicciones,gold_standard)[0],6), #3
         round(spearmanr(predicciones,gold_standard)[0],6), #4
-        round(time.time()-marca_de_tiempo, #5
+        round(time.time()-marca_de_tiempo,1), #5
         strftime("%Y-%m-%d %H:%M:%S", gmtime()), #6
-        1))
+        )
         print linea_resultados
         # adiciona la linea de resultados al archivo de resultados y lo cierra
         archivo_resultados=open(nombre_archivo_resultados,"a")
