@@ -4,19 +4,14 @@ import sys
 
 
 print "uso:"
-print "python edit_ditance.py <max palabras en el corpus> <codigo ISO lengua> <palabra a buscar> <max operaciones edicion>"
+print "python edit_ditance.py <codigo ISO lengua> <palabra a buscar> <max operaciones edicion>"
 print "ejemplo uso:"
-print "python edit_ditance.py 10000000 es Johnatan 3"
-max_palabras_corpus=int(sys.argv[1])  # funcion int(cadena) convierte la cadena en un numero entero
-codigos_ISO=sys.argv[2:]
-palabra_buscar=sys.argv[3:]
-max_operaciones_edicion=int(sys.argv[3:])
-
-reporta_cada_cuantos_articulos=1000
+print "python edit_distance.py es Johnatan 3"
+codigos_ISO=sys.argv[1]
+palabra_buscar=sys.argv[2]
+max_operaciones_edicion=int(sys.argv[3])
 
 url=rufino.WIKIPEDIA_URLS[codigo_ISO]
-contador_palabras=0
-contador_articulos=0
 for articulo in rufino.get_articles(url):
     texto=rufino.clean_article(articulo).lower()
     palabras=rufino.split_words(texto)
