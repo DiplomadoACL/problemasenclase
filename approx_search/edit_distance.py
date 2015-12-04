@@ -7,7 +7,7 @@ print "uso:"
 print "python edit_ditance.py <codigo ISO lengua> <palabra a buscar> <max operaciones edicion>"
 print "ejemplo uso:"
 print "python edit_distance.py es Johnatan 3"
-codigos_ISO=sys.argv[1]
+codigo_ISO=sys.argv[1]
 palabra_buscar=sys.argv[2]
 max_operaciones_edicion=int(sys.argv[3])
 
