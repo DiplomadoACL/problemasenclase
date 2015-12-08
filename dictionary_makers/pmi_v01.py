@@ -9,10 +9,14 @@ codigos_ISO=sys.argv[2:]
 for codigo_ISO in codigos_ISO:
     archivo=open(PATH+codigo_ISO+"wiki_frecuencias.pickle","r")
     metadatos_palabras,dic_palabras=pickle.load(archivo)
+    print
+    print "Metadatos archivo de frecuencias de palabras:",metadatos_palabras
     archivo.close()
 
     archivo=open(PATH+codigo_ISO+"wiki_2grams.pickle","r")
     metadatos_bigramas,dic_bigramas=pickle.load(archivo)
+    print
+    print "Metadatos archivo de frecuencias de bigramas:",metadatos_bigramas
     archivo.close()
 
     numero_palabras_corpus=metadatos_palabras["palabras_corpus"]
