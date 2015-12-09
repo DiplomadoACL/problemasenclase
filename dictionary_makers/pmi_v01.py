@@ -40,7 +40,14 @@ for codigo_ISO in codigos_ISO:
 
     lista_bigramas_ordenados=dic_pmi.keys()
     lista_bigramas_ordenados.sort(key=lambda x:-dic_pmi[x])
-    for bigrama in lista_bigramas_ordenados[:2000]: 
+    print "Palabras mas relacionadas:" 
+    for bigrama in lista_bigramas_ordenados[:200]: 
+        palabra1=bigrama[:bigrama.find("|||")]
+        palabra2=bigrama[bigrama.find("|||")+3:]
+        print bigrama, dic_pmi[bigrama],dic_palabras[palabra1],dic_palabras[palabra2],dic_bigramas[bigrama]
+    
+    print "Palabras menos relacionadas:" 
+    for bigrama in lista_bigramas_ordenados[-200:]: 
         palabra1=bigrama[:bigrama.find("|||")]
         palabra2=bigrama[bigrama.find("|||")+3:]
         print bigrama, dic_pmi[bigrama],dic_palabras[palabra1],dic_palabras[palabra2],dic_bigramas[bigrama]
