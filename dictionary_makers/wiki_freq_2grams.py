@@ -41,7 +41,7 @@ for codigo_ISO in codigos_ISO:
                }
     archivo=open(PATH+codigo_ISO+"wiki_2grams.pickle","w")
     print "Guardando diccionario "+codigo_ISO
-    pickle.dump([metadatos,dic_conteo_bigramas],archivo,protocol=2)
+    pickle.dump([metadatos,dic_conteo_bigramas],archivo)
     print "Diccionario guardado"
     archivo.close()
     
