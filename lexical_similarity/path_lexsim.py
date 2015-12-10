@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import rufino
 import sys
+import codecs
 
 from scipy.stats.stats import pearsonr
 from scipy.stats.stats import spearmanr
