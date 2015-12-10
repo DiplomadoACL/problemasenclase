@@ -1,12 +1,6 @@
 # -*- coding:utf-8 -*-
 import rufino
 import sys
-import math
-import time
-import codecs
-from time import gmtime, strftime
-
-
 
 from scipy.stats.stats import pearsonr
 from scipy.stats.stats import spearmanr
