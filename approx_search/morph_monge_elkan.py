@@ -19,4 +19,4 @@ for articulo in rufino.get_articles(url):
         lista_palabras_oracion=rufino.split_words(oracion)
         similitud=rufino.monge_elkan(oracion_buscar,lista_palabras_oracion,rufino.sim_edit_distance,exponente)
         if similitud>umbral and len(lista_palabras_oracion)<=largo_max_oracion:
-                print texto[:30],similitud,oracion
+                print texto[:40],similitud,oracion
