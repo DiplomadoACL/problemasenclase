@@ -23,7 +23,7 @@ for linea in archivo.readlines():
     oracion2=rufino.split_words(linea[posicion_primer_tab+1:posicion_segundo_tab])
     estandar_de_oro=float(linea[posicion_segundo_tab+1:])
     gold_standard.append(estandar_de_oro)
-    similarities.append(rufino.monge_elkan(oracion1,oracion2,sim_edit_distance,2))
+    similarities.append(rufino.monge_elkan(oracion1,oracion2,rufino.sim_edit_distance,2))
 archivo.close()
 
 print "Pearson r=",round(pearsonr(similarities,gold_standard)[0],6)
